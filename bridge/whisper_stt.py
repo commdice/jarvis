@@ -23,7 +23,7 @@ import sys
 
 def main() -> int:
     try:
-        from faster_whisper import WhisperModel
+        from faster_whisper import WhisperModel  # type: ignore[import-not-found]
     except Exception as exc:  # noqa: BLE001 - report and exit, the bridge falls back
         sys.stdout.write(json.dumps({"error": f"faster-whisper not available: {exc}"}) + "\n")
         sys.stdout.flush()
