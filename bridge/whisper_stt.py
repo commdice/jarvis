@@ -25,7 +25,9 @@ def main() -> int:
     try:
         from faster_whisper import WhisperModel  # type: ignore[import-not-found]
     except Exception as exc:  # noqa: BLE001 - report and exit, the bridge falls back
-        sys.stdout.write(json.dumps({"error": f"faster-whisper not available: {exc}"}) + "\n")
+        sys.stdout.write(
+            json.dumps({"error": f"faster-whisper not available: {exc}"}) + "\n"
+        )
         sys.stdout.flush()
         return 1
 
@@ -34,7 +36,9 @@ def main() -> int:
     try:
         model = WhisperModel(model_name, device="cpu", compute_type=compute)
     except Exception as exc:  # noqa: BLE001
-        sys.stdout.write(json.dumps({"error": f"could not load model {model_name}: {exc}"}) + "\n")
+        sys.stdout.write(
+            json.dumps({"error": f"could not load model {model_name}: {exc}"}) + "\n"
+        )
         sys.stdout.flush()
         return 1
 
